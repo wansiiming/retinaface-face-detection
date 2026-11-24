@@ -1,0 +1,16 @@
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.env
+*.log
+*.pth
+*.pt
+*.ckpt
+data/
+images/
+output/
+checkpoints/
+FaceDataset*/
+.DS_Store
+Thumbs.db
