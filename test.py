@@ -10,8 +10,8 @@ from torchvision import transforms
 import os
 
 # 配置
-MODEL_PATH = r"C:\Users\王子鸣\PycharmProjects\PythonProject\best_model.pth"
-DATASET_ROOT = r"C:\Users\王子鸣\PycharmProjects\PythonProject\FaceDataset_organized"
+MODEL_PATH = "checkpoints/best_model.pth"
+DATASET_ROOT = "FaceDataset"
 DEVICE = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 
 print("=" * 60)

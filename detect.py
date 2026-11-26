@@ -40,8 +40,8 @@ DEVICE = cfg.DEVICE
 DATASET_ROOT = cfg.DATASET_ROOT
 INPUT_SIZE = 640
 
-# 模型路径（您的 best_model.pth 所在位置）
-MODEL_PATH = r"C:\Users\王子鸣\PycharmProjects\PythonProject\best_model.pth"
+# 模型路径（把训练生成的 best_model.pth 放到 checkpoints 下即可）
+MODEL_PATH = "checkpoints/best_model.pth"
 
 
 def decode_predictions(pred_cls, pred_reg, pred_kpt, anchors, conf_thresh=0.01, nms_thresh=0.4):
@@ -275,7 +275,7 @@ def detect(image_path):
 
 if __name__ == '__main__':
     # 测试图片路径
-    TEST_IMAGE = r"C:\Users\王子鸣\PycharmProjects\PythonProject\FaceDataset_organized\train\images\P0301_V01_FRONT_0001.jpg"
+    TEST_IMAGE = "sample.jpg"
 
     # 如果不存在，自动找一张
     if not os.path.exists(TEST_IMAGE):

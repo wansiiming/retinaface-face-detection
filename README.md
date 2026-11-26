@@ -15,9 +15,10 @@
 | `anchor.py` / `anchors.py` | 先验框生成 |
 | `dataset.py` | 数据加载 |
 | `losses.py` | 分类、框回归、关键点损失 |
-| `train.py`、`train_config.py`、`run_train.py` | 训练入口与配置 |
-| `detect.py` | 单图检测 |
-| `7_config.py` | 推理配置 |
+| `train.py`、`train_config.py` | 训练入口与配置 |
+| `detect.py`、`11new_detect.py` | 单图检测（基础版 / 含 Anchor 解码 + NMS 的进阶版） |
+| `test.py`、`check_anchors.py` | 权重加载测试、Anchor 数量自检 |
+| `7_config.py` | 训练与推理参数配置 |
 
 ## 模型结构
 
