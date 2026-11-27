@@ -1,5 +1,10 @@
 # RetinaFace 人脸检测
 
+[![CI](https://github.com/wansiiming/retinaface-face-detection/actions/workflows/ci.yml/badge.svg)](https://github.com/wansiiming/retinaface-face-detection/actions/workflows/ci.yml)
+![Python](https://img.shields.io/badge/Python-3.10-3776AB?logo=python&logoColor=white)
+![PyTorch](https://img.shields.io/badge/PyTorch-2.4-EE4C2C?logo=pytorch&logoColor=white)
+![License](https://img.shields.io/badge/license-MIT-green)
+
 基于 PyTorch 的 RetinaFace 人脸检测实现，包含骨干网络、FPN、Anchor 生成、检测头和训练/推理脚本。
 
 ![检测结果](detect_result.jpg)
@@ -80,6 +85,23 @@ python plot_train_log.py --demo        # 没有日志时先看输出效果
 - `best_model.pth` 约 278 MB，未上传，请用训练脚本自行生成或从 release 下载
 - 人脸数据集未上传，避免仓库过大和版权问题
 - `detect_result.jpg` 是推理结果示例
+
+## 测试
+
+```bash
+pip install pytest numpy
+pytest -q tests
+```
+
+`tests/test_anchors.py` 用字节替身绕开 PyTorch，验证 Anchor 生成器的核心约束：
+六层（P2~P7）× 3 种尺度共 102375 个候选框、首个框的中心与边长、每层数量等于特征图边长²×3、
+同一行 anchor 按步长 4 递增。CI 在每次 push 时自动跑这套测试。
+
+## 局限与后续
+
+- 没有上传训练日志和权重，所以 README 不贴 mAP 数字，避免给出无法复现的结论
+- 训练脚本按课程环境写成脚本式结构，后续计划抽成 `dataset / model / train / eval` 四个模块
+- 数据增强只做了随机裁剪与翻转，未做 RetinaFace 论文里的光度畸变
 
 ## 说明
 
