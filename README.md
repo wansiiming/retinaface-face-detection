@@ -19,6 +19,7 @@
 | `detect.py`、`11new_detect.py` | 单图检测（基础版 / 含 Anchor 解码 + NMS 的进阶版） |
 | `test.py`、`check_anchors.py` | 权重加载测试、Anchor 数量自检 |
 | `7_config.py` | 训练与推理参数配置 |
+| `plot_train_log.py` | 训练日志画 loss 曲线、汇总最优轮次 |
 
 ## 模型结构
 
@@ -49,6 +50,30 @@ python train.py
 ```
 
 数据集按 WIDER FACE 目录组织，路径在 `train_config.py` 中修改。
+
+依赖：
+
+```bash
+pip install -r requirements.txt
+```
+
+训练曲线：
+
+```bash
+# 训练时每轮把 epoch,train_loss,val_loss(,mAP) 写进 CSV
+python plot_train_log.py --log train_log.csv --out train_curves.png
+python plot_train_log.py --demo        # 没有日志时先看输出效果
+```
+
+## 关于指标
+
+训练日志和权重体积较大，没有随仓库上传，因此这里不贴具体 mAP 数字，避免给出无法复现的结果。
+仓库提供的是完整的结构与训练流程，复现方式：
+
+1. 按 `train_config.py` 里的路径放好 WIDER FACE 数据集
+2. `python train.py` 训练，日志写入 CSV
+3. `python plot_train_log.py --log train_log.csv` 得到 loss 曲线
+4. `python detect.py` 在单张图片上验证检测效果
 
 ## 数据与权重
 
